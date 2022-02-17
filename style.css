@@ -1,3 +1,15 @@
+:root {
+  box-sizing: border-box;
+  --main-color: black; /* Переменная черного цвета */
+  --main-color-light: #dcd4d1; /* Переменная бежевого цвета */
+}
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+/*Анимация*/
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -11,13 +23,13 @@
 }
 @keyframes rot {
   0% {
-    fill: rgb(0, 0, 0);
+    fill: var(--main-color);
   }
   20% {
     fill: none;
   }
   60% {
-    fill: rgb(0, 0, 0);
+    fill: var(--main-color);
   }
   100% {
     fill: none;
@@ -43,28 +55,18 @@
 }
 @keyframes ellipse {
   0% {
-    fill: #dcd4d1;
+    fill: var(--main-color-light);
   }
   50% {
     fill: #aca19d;
   }
   100% {
-    fill: #dcd4d1;
+    fill: var(--main-color-light);
   }
 }
-
-:root {
-  box-sizing: border-box;
-}
-*,
-::before,
-::after {
-  box-sizing: inherit;
-}
-
 body {
   display: grid;
-  grid-template-rows: auto auto 1fr 0.2fr;
+  grid-template-rows: 0.1fr 1fr auto;
   font-family: "Tahoma";
 }
 header {
@@ -107,9 +109,9 @@ header .header_logo svg {
 }
 .header_menu {
   display: flex;
-  background-color: black;
+  background-color: var(--main-color);
   z-index: 1;
-  box-shadow: 0 0 1em 0em black;
+  box-shadow: 0 0 1em 0em var(--main-color);
   justify-content: center;
   align-items: center;
 }
@@ -123,7 +125,7 @@ header .header_logo svg {
   margin: auto;
 }
 .header_menu a {
-  color: #dcd4d1;
+  color: var(--main-color-light);
   font-size: 1.5rem;
   padding: 0.5em 0;
   background-image: url("images/3.svg");
@@ -139,13 +141,13 @@ header .header_logo svg {
   transition: 0.3s;
 }
 .biography {
-  background-color: #dcd4d1;
+  background-color: var(--main-color-light);
   display: flex;
   flex-direction: column;
 }
 .biography .biography__text {
   padding-top: 3%;
-  font-size: 16pt;
+  font-size: 1.5rem;
   width: 80%;
   margin: auto;
   text-align: justify;
@@ -165,14 +167,14 @@ header .header_logo svg {
 .biography .biography__moondog ellipse,
 .biography .biography__moondog image,
 #dog {
-  -webkit-filte: drop-shadow(70em 1em 70em rgb(0, 0, 0));
-  filter: drop-shadow(70em 1em 70em rgb(0, 0, 0));
+  -webkit-filte: drop-shadow(70em 1em 70em var(--main-color));
+  filter: drop-shadow(70em 1em 70em var(--main-color));
 }
 .biography .biography__moondog .fon {
-  filter: drop-shadow(50em 1em 300em rgba(0, 0, 0, 0.514));
+  filter: drop-shadow(50em 1em 300em var(--main-color));
 }
 .str0 {
-  stroke: rgb(0, 0, 0);
+  stroke: var(--main-color);
   stroke-width: 352.7;
   stroke-miterlimit: 22.9256;
 }
@@ -180,61 +182,79 @@ header .header_logo svg {
   fill: none;
 }
 .fil1 {
-  fill: black;
+  fill: var(--main-color);
 }
 .fil0,
 .fon {
-  fill: #dcd4d1;
+  fill: var(--main-color-light);
 }
 .fil2 {
   fill: white;
 }
 .biography .biography__moondog .fil0 {
-  fill: #dcd4d1;
+  fill: var(--main-color-light);
   animation-name: ellipse;
   animation-duration: 5s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
 }
 .biography .biography__moondog .fil11 {
-  fill: #dcd4d1;
+  fill: var(--main-color-light);
   animation-name: ellipse;
   animation-duration: 7s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
 }
 .biography .biography__moondog .rot {
-  fill: black;
+  fill: var(--main-color);
   animation-name: rot;
   animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
 }
 .music {
-  background: black;
+  background: var(--main-color);
   z-index: 1;
-  box-shadow: 0 0 1em 0em black;
+  box-shadow: 0 0 1em 0em var(--main-color);
 }
 .music h2 {
   color: white;
   text-align: center;
 }
 footer {
-  background: black;
+  gap: 1em;
+  background: var(--main-color);
   z-index: 2;
-  box-shadow: black 0 0 1em;
+  box-shadow: var(--main-color) 0 0 1em;
 }
-footer ul {
+.footer__we {
+  width: 80%;
+  margin: auto;
+  align-items: center;
   display: flex;
-  list-style-type: none;
+  gap: 1em;
 }
-
+footer .footer__menu {
+  display: flex;
+  gap: 1em;
+  list-style-type: none;
+  justify-content: center;
+}
+footer .footer__menu a {
+  color: var(--main-color-light);
+}
+.footer__copir,
+.footer__communiti {
+  color: var(--main-color-light);
+  font-size: 1rem;
+}
+/*Адаптив*/
 @media (max-width: 1200px) {
   .header_text h1 {
     font-size: 6rem;
   }
   .header_menu a {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   header .header_logo svg {
     width: auto;
@@ -242,26 +262,78 @@ footer ul {
     max-width: 150px;
   }
 }
+@media (max-width: 1004px) {
+  .biography .biography__text {
+    font-size: 1rem;
+  }
+}
 @media (max-width: 770px) {
   .header_text h1 {
     font-size: 4rem;
   }
-  body {
-    grid-template-rows: 0.6fr 3fr 2fr;
+  .header_menu a {
+    font-size: 1rem;
   }
   header .header_logo svg {
     width: auto;
     height: auto;
     max-width: 70px;
   }
+  .biography .biography__text {
+    font-size: 1rem;
+  }
+  .footer__copir,
+  .footer__communiti {
+    font-size: 0.5rem;
+  }
 }
 @media (max-width: 500px) {
   .header_text h1 {
     font-size: 3rem;
   }
+  .header_menu a {
+    font-size: 0.8rem;
+  }
   header .header_logo svg {
     width: auto;
     height: auto;
     max-width: 50px;
+  }
+  .biography .biography__text {
+    font-size: 0.9rem;
+  }
+  .header_logo {
+    background-color: var(--main-color);
+    height: 200px;
+    margin-bottom: -100px;
+    margin-top: -11%;
+  }
+  .header_logo img {
+    display: none;
+  }
+  .header_menu {
+    position: relative;
+    visibility: hidden;
+  }
+  .header_menu ul {
+    visibility: visible;
+    margin-top: 5%;
+  }
+}
+@media (max-width: 350px) {
+  .header_text h1 {
+    font-size: 2rem;
+  }
+  .header_menu ul {
+    flex-flow: column;
+    margin-top: -35%;
+    text-align: center;
+  }
+  header {
+    background-color: var(--main-color);
+    height: 200px;
+  }
+  .header_logo {
+    margin-top: -17%;
   }
 }
