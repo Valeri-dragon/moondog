@@ -1,6 +1,6 @@
 :root {
   box-sizing: border-box;
-  --main-color: black; /* Переменная черного цвета */
+  --main-color: rgb(0, 0, 0); /* Переменная черного цвета */
   --main-color-light: #dcd4d1; /* Переменная бежевого цвета */
 }
 *,
@@ -8,62 +8,21 @@
 ::after {
   box-sizing: inherit;
 }
-
 /*Анимация*/
-@keyframes gradient {
+@keyframes pulse {
   0% {
-    background-position: 0% 50%;
+    transform: scale(0.5);
+    opacity: 0;
   }
   50% {
-    background-position: 100% 50%;
+    opacity: 1;
   }
   100% {
-    background-position: 0% 50%;
+    transform: scale(1.2);
+    opacity: 0;
   }
 }
-@keyframes rot {
-  0% {
-    fill: var(--main-color);
-  }
-  20% {
-    fill: none;
-  }
-  60% {
-    fill: var(--main-color);
-  }
-  100% {
-    fill: none;
-  }
-}
-@keyframes mon {
-  0% {
-    margin-bottom: -1%;
-    left: 0;
-  }
-  50% {
-    margin-bottom: 0%;
-    left: 1%;
-  }
-  70% {
-    margin-bottom: -1%;
-    left: 1%;
-  }
-  100% {
-    margin-bottom: -1%;
-    left: 0;
-  }
-}
-@keyframes ellipse {
-  0% {
-    fill: var(--main-color-light);
-  }
-  50% {
-    fill: #aca19d;
-  }
-  100% {
-    fill: var(--main-color-light);
-  }
-}
+
 body {
   display: grid;
   grid-template-rows: 0.1fr 1fr auto;
@@ -71,6 +30,7 @@ body {
 }
 header {
   display: grid;
+  background-color: var(--main-color);
   grid-template-rows: 3fr 60px;
 }
 header .str0 {
@@ -100,6 +60,11 @@ header .header_logo svg {
   width: auto;
   height: auto;
   min-width: 20px;
+}
+header .header_logo svg:hover {
+  background-color: #ffffff2d;
+  border-radius: 50%;
+  animation: pulse 2.5s linear infinite;
 }
 .header_text h1 {
   font-size: 8rem;
@@ -159,58 +124,14 @@ header .header_logo svg {
   justify-self: end;
   margin-top: -11%;
 }
+.biography__animation {
+  width: 100%;
+  height: auto;
+}
 .biography .biography__moondog svg {
   width: auto;
   height: auto;
   max-width: 100%;
-}
-.biography .biography__moondog ellipse,
-.biography .biography__moondog image,
-#dog {
-  -webkit-filte: drop-shadow(70em 1em 70em var(--main-color));
-  filter: drop-shadow(70em 1em 70em var(--main-color));
-}
-.biography .biography__moondog .fon {
-  filter: drop-shadow(50em 1em 300em var(--main-color));
-}
-.str0 {
-  stroke: var(--main-color);
-  stroke-width: 352.7;
-  stroke-miterlimit: 22.9256;
-}
-.dog3 {
-  fill: none;
-}
-.fil1 {
-  fill: var(--main-color);
-}
-.fil0,
-.fon {
-  fill: var(--main-color-light);
-}
-.fil2 {
-  fill: white;
-}
-.biography .biography__moondog .fil0 {
-  fill: var(--main-color-light);
-  animation-name: ellipse;
-  animation-duration: 5s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-}
-.biography .biography__moondog .fil11 {
-  fill: var(--main-color-light);
-  animation-name: ellipse;
-  animation-duration: 7s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-}
-.biography .biography__moondog .rot {
-  fill: var(--main-color);
-  animation-name: rot;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
 }
 .music {
   background: var(--main-color);
@@ -227,7 +148,7 @@ footer {
   z-index: 2;
   box-shadow: var(--main-color) 0 0 1em;
 }
-.footer__we {
+.footer__main {
   width: 80%;
   margin: auto;
   align-items: center;
@@ -248,6 +169,17 @@ footer .footer__menu a {
   color: var(--main-color-light);
   font-size: 1rem;
 }
+.footer__logo {
+  max-width: 40px;
+  margin-left: auto;
+}
+
+.footer__common {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  gap: 0.5em;
+}
 /*Адаптив*/
 @media (max-width: 1200px) {
   .header_text h1 {
@@ -262,48 +194,49 @@ footer .footer__menu a {
     max-width: 150px;
   }
 }
-@media (max-width: 1004px) {
-  .biography .biography__text {
-    font-size: 1rem;
-  }
-}
 @media (max-width: 770px) {
   .header_text h1 {
     font-size: 4rem;
   }
   .header_menu a {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   header .header_logo svg {
     width: auto;
     height: auto;
     max-width: 70px;
   }
-  .biography .biography__text {
-    font-size: 1rem;
-  }
   .footer__copir,
   .footer__communiti {
     font-size: 0.5rem;
   }
 }
-@media (max-width: 500px) {
-  .header_text h1 {
-    font-size: 3rem;
+@media (max-width: 640px) {
+  header nav {
+    margin-top: -50%;
   }
+  .header_text h1 {
+    font-size: 2rem;
+  }
+  .header_menu ul {
+    flex-flow: column;
+    text-align: center;
+  }
+  header {
+    height: 300px;
+  }
+
   .header_menu a {
-    font-size: 0.8rem;
+    font-size: 1.5rem;
   }
   header .header_logo svg {
     width: auto;
     height: auto;
     max-width: 50px;
   }
-  .biography .biography__text {
-    font-size: 0.9rem;
-  }
+
   .header_logo {
-    background-color: var(--main-color);
+    margin-top: -17%;
     height: 200px;
     margin-bottom: -100px;
     margin-top: -11%;
@@ -318,22 +251,5 @@ footer .footer__menu a {
   .header_menu ul {
     visibility: visible;
     margin-top: 5%;
-  }
-}
-@media (max-width: 350px) {
-  .header_text h1 {
-    font-size: 2rem;
-  }
-  .header_menu ul {
-    flex-flow: column;
-    margin-top: -35%;
-    text-align: center;
-  }
-  header {
-    background-color: var(--main-color);
-    height: 200px;
-  }
-  .header_logo {
-    margin-top: -17%;
   }
 }
