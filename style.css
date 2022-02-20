@@ -9,20 +9,6 @@
   box-sizing: inherit;
 }
 /*Анимация*/
-@keyframes pulse {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 0;
-  }
-}
-
 body {
   display: grid;
   grid-template-rows: 0.1fr 1fr auto;
@@ -60,11 +46,6 @@ header .header_logo svg {
   width: auto;
   height: auto;
   min-width: 20px;
-}
-header .header_logo svg:hover {
-  background-color: #ffffff2d;
-  border-radius: 50%;
-  animation: pulse 2.5s linear infinite;
 }
 .header_text h1 {
   font-size: 8rem;
